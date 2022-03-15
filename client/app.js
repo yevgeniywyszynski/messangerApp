@@ -19,3 +19,16 @@ loginForm.addEventListener('submit', function login(event) {
         messagesSection.classList.add('show')
     }
 })
+
+/* 2 form */
+
+addMessageForm.addEventListener('submit', function sendMessage(event) {
+    event.preventDefault()
+    let messageContent = messageContentInput.value
+    if(!messageContentInput.value) {
+        alert('pole tekstowe jest puste')
+    } else {
+        addMessageForm(userName, messageContent);
+        messageContentInput.value = ''
+    }
+})
