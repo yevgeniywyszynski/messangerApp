@@ -12,6 +12,6 @@ app.use('/', function(req, res) {
     render.res('index')
 })
 
-app.listen(800, () => {
+app.listen(8000, () => {
     console.log('server is running...')
 })
