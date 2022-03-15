@@ -13,5 +13,5 @@ app.use('/', function(req, res) {
 })
 
 app.listen(800, () => {
-    console.log('server is running')
+    console.log('server is running...')
 })
