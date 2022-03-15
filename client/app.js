@@ -28,7 +28,23 @@ addMessageForm.addEventListener('submit', function sendMessage(event) {
     if(!messageContentInput.value) {
         alert('pole tekstowe jest puste')
     } else {
-        addMessageForm(userName, messageContent);
+        addMessage(userName, messageContent);
         messageContentInput.value = ''
     }
 })
+
+function addMessage(author, content) {
+    let message = document.createElement('li')
+    message.classList.add('message')
+    message.classList.add('message--received')
+    if( author == userName) {
+        message.classList.add('message--self')
+    }
+    message.innerHTML = `
+    <h3 class="message__author">${userName == author?userName:author}</h3>
+    <div class="message__content">
+    ${content}
+    </div>
+    `
+    messagesList.appendChild(message)
+}
