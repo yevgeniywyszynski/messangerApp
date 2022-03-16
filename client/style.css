@@ -54,14 +54,15 @@ p {
 
 .text-input {
   background: none;
-  border: none;
+
   color: #000;
-  border-bottom: 2px solid #0064e7;
-  padding: 8px 25px 8px 5px;
+  border: 2px solid #0064e7;
+  padding: 8px 25px 8px 15px;
   font-family: inherit;
   outline: none;
   opacity: 0.6;
   transition: .3s;
+  border-radius: 35px ;
 }
 
 .text-input:focus {

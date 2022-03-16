@@ -18,6 +18,7 @@ loginForm.addEventListener('submit', function login(event) {
         alert('wpisz nazwę uytkownika')
     } else {
         userName = userNameInput.value;
+        socket.emit('join', userName )
         loginForm.classList.remove('show')
         messagesSection.classList.add('show')
     }

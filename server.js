@@ -6,7 +6,7 @@ const app = express()
 app.set('views', path.join(__dirname, 'views'));
 
 let messages = []
-let userName = []
+let users = []
 
 app.use(express.static(path.join(__dirname, '/client')))
 
@@ -21,12 +21,21 @@ const server = app.listen(8000, () => {
 const io = socket(server)
 
 io.on('connection', (socket) => {
-    console.log('New client! Its id – ' + socket.id);
+    console.log('New client! its id - ' + socket.id);
+
+    socket.on('join', name => {
+        users.push({name, id: socket.id})
+        socket.broadcast.emit('message', {author: 'Chat Bot', content: `${name} has joined the conversation`})
+    })
+
     socket.on('message', (message) => {
         console.log('Oh, I\'ve got something from ' + socket.id);
-        messages.push(message);
+        messages.push(message)
         socket.broadcast.emit('message', message);
-      });
-    socket.on('disconnect', () => { console.log('Oh socket' + socket.id + 'has left')})
-    console.log('I\'ve added a listener on message event \n');
-  });
+    })
+
+   socket.on('disconnect', () => {
+       let user = users.find(e => e.id == socket.id)
+       socket.broadcast.emit('message', {author: 'Chat bot', content: `${user?.name} has left the conversation... :(`})
+   })
+})
