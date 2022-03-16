@@ -32,7 +32,7 @@ addMessageForm.addEventListener('submit', function sendMessage(event) {
         alert('pole tekstowe jest puste')
     } else {
         addMessage(userName, messageContent);
-        socket.emit('message', ({author: userName, content: messageContent}))
+        socket.emit('message', {author: userName, content: messageContent})
         messageContentInput.value = ''
     }
 })
