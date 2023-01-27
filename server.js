@@ -24,8 +24,8 @@ io.on('connection', (socket) => {
     console.log('New client! its id - ' + socket.id);
 
     socket.on('join', name => {
-        users.push({name, id: socket.id})
-        socket.broadcast.emit('message', {author: 'Chat Bot', content: `${name} has joined the conversation`})
+        users.push({"name":name, "id":socket.id})
+        socket.broadcast.emit('message', {"author": 'Chat Bot', "content": `${name} has joined the conversation`})
     })
 
     socket.on('message', (message) => {

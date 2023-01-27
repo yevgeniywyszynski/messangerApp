@@ -6,7 +6,7 @@ const userNameInput = document.getElementById('username');
 const messageContentInput = document.getElementById('message-content');
 const socket = io();
 
-let userName = []
+let userName = ''
 
 socket.on('message', ({author, content}) => addMessage(author, content))
 
